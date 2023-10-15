@@ -30,9 +30,25 @@ class PersonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PersonRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $person = Person::create([
+            'name' => $validated['name'],
+            'birthday' => $validated['birthday'],
+            'gender' => $validated['gender'],
+        ]);
+
+        $person->address()->create([
+            'person_id' => $person->id,
+            'address' => $validated['address'],
+            'post_code' => $validated['post_code'],
+            'city_name' => $validated['city_name'],
+            'country_name' => $validated['country_name'],
+        ]);
+
+        return redirect()->route('home', $person->id);
     }
 
     /**
