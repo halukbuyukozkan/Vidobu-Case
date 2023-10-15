@@ -41,8 +41,9 @@
                 <div class="mb-3">
                     <label for="gender" class="form-label">Gender</label>
                     <select class="form-select" aria-label="Default select example">
-                        <option selected value="male">Male</option>
-                        <option value="female">Female</option>
+                        @foreach ($genders as $gender)
+                            <option value="{{ $gender }}">{{ $gender }}</option>                            
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">

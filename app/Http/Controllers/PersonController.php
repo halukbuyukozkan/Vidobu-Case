@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PersonGenderEnum;
+use App\Http\Requests\PersonRequest;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -20,7 +22,9 @@ class PersonController extends Controller
      */
     public function create()
     {
-        return view('person.create');
+        $genders = PersonGenderEnum::cases();
+
+        return view('person.create',compact('genders'));
     }
 
     /**
