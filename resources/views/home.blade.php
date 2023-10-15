@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex">
                   {{ __('Dashboard') }}
-                  <a type="button" class="btn btn-primary ms-auto" href="{{ route('person.create') }}" ><i class="bi bi-pencil-fill"></i> Create Person</a>                
+                  <a type="button" class="btn btn-primary ms-auto" href="{{ route('people.create') }}" ><i class="bi bi-pencil-fill"></i> Create Person</a>                
                 </div>
 
                 <div class="card-body">
@@ -40,10 +40,14 @@
                             <td>{{ $person->address->post_code}}</td>
                             <td>{{ $person->address->city_name }}</td>
                             <td>{{ $person->address->country_name }}</td>
-                            <td class="text-end">
+                            <td class="text-end" style="width: 30%">
                               <a type="button" class="btn btn-secondary"><i class="bi bi-eye-fill"></i> Details</a>
-                              <a type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> Edit</a>
-                              <a type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Delete</a>
+                              <a type="button" class="btn btn-primary" href="{{ route('people.edit',$person['id']) }}"><i class="bi bi-pencil-fill"></i> Edit</a>
+                              <form action="{{ route('people.destroy',$person['id']) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Delete</button>
+                              </form>
                             </td>
                           </tr>
                           @endforeach

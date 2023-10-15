@@ -62,24 +62,43 @@ class PersonController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Person $person)
     {
-        //
+        $genders = PersonGenderEnum::cases();
+
+        return view('person.edit',compact('person','genders'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PersonRequest $request, Person $person)
     {
-        //
+        $validated = $request->validated();
+
+        $person->update([
+            'name' => $validated['name'],
+            'birthday' => $validated['birthday'],
+            'gender' => $validated['gender'],
+        ]);
+
+        $person->address()->update([
+            'address' => $validated['address'],
+            'post_code' => $validated['post_code'],
+            'city_name' => $validated['city_name'],
+            'country_name' => $validated['country_name'],
+        ]);
+
+        return redirect()->route('home');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Person $person)
     {
-        //
+        $person->delete();
+
+        return redirect()->route('home');
     }
 }
