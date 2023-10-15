@@ -3,9 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div>
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header d-flex">
+                  {{ __('Dashboard') }}
+                  <a type="button" class="btn btn-primary ms-auto" href="{{ route('person.create') }}" ><i class="bi bi-pencil-fill"></i> Create Person</a>                
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -20,7 +23,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Address</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col" class="text-end">Actions</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -28,10 +31,10 @@
                             <th scope="row">1</th>
                             <td>test</td>
                             <td>test</td>
-                            <td style="width: 30%">
-                              <button type="button" class="btn btn-secondary"><i class="bi bi-eye-fill"></i> Details</button>
-                              <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> Edit</button>
-                              <button type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Delete</button>
+                            <td class="text-end">
+                              <a type="button" class="btn btn-secondary"><i class="bi bi-eye-fill"></i> Details</a>
+                              <a type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> Edit</a>
+                              <a type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Delete</a>
                             </td>
                           </tr>
                         </tbody>
