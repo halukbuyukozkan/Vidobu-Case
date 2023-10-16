@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         Person::factory()
-            ->count(50)
+            ->count(15)
             ->hasAddress(1)
             ->create();
 

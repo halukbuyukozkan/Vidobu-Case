@@ -33,6 +33,7 @@
                         class="form-control @error('birthday') is-invalid @enderror" 
                         id="birthday" 
                         name="birthday"
+                        required
                     >
                     @error('birthday')
                         <div class="invalid-feedback">
@@ -56,6 +57,7 @@
                         class="form-control @error('address') is-invalid @enderror" 
                         id="address" 
                         name="address"
+                        required
                     >{{ $person->address->address }}</textarea>
                     @error('address')
                         <div class="invalid-feedback">
@@ -72,6 +74,7 @@
                         id="post_code" 
                         name="post_code"
                         value="{{ $person->address->post_code }}"
+                        required
                     >
                     @error('post_code')
                         <div class="invalid-feedback">
@@ -88,6 +91,7 @@
                         id="city_name" 
                         name="city_name"
                         value="{{ $person->address->city_name }}"
+                        required
                     >
                     @error('city')
                         <div class="invalid-feedback">
@@ -104,6 +108,7 @@
                         id="country_name" 
                         name="country_name"
                         value="{{ $person->address->country_name }}"
+                        required
                     >
                     @error('country_name')
                         <div class="invalid-feedback">
