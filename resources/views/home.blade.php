@@ -54,6 +54,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="d-flex justify-content-center">
+                  {!! $people->links() !!}
+              </div>
             </div>
         </div>
     </div>

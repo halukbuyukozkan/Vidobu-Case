@@ -41,7 +41,6 @@ class PersonController extends Controller
         ]);
 
         $person->address()->create([
-            'person_id' => $person->id,
             'address' => $validated['address'],
             'post_code' => $validated['post_code'],
             'city_name' => $validated['city_name'],
